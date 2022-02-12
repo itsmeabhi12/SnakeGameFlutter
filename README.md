@@ -1,9 +1,9 @@
 # snakegame
 
-A new Flutter project.
+Snacke Game Developed Using Flutter 
 
 ## Getting Started
-
+<img src="https://github.com/itsmeabhi12/SnakeGameFlutter/blob/main/Rec-0001.gif"/>
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
