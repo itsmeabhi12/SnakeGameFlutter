@@ -34,12 +34,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // Down or right - head val is grater than other
   //up or left - head val is less than other
-  // head = snackposition.last
+  // head refers to last element of array
   List<int> snakePosition = [24, 44, 64];
   int foodLocation = Random().nextInt(700);
   bool start = false;
   Direction direction = Direction.down;
-  List<int> totalSpot = List.generate(760, (index) => index);
+  List<int> totalSpot = List.generate(760, (index) => index); //totalspot
   startGame() {
     start = true;
     snakePosition = [24, 44, 64];
@@ -65,14 +65,16 @@ class _HomePageState extends State<HomePage> {
         case Direction.up:
           if (snakePosition.last < 20) {
             snakePosition.add(snakePosition.last + 760 - 20);
+          } else {
+            snakePosition.add(snakePosition.last - 20);
           }
-          snakePosition.add(snakePosition.last - 20);
           break;
         case Direction.right:
           if ((snakePosition.last + 1) % 20 == 0) {
             snakePosition.add(snakePosition.last + 1 - 20);
+          } else {
+            snakePosition.add(snakePosition.last + 1);
           }
-          snakePosition.add(snakePosition.last + 1);
           break;
         case Direction.left:
           if (snakePosition.last % 20 == 0) {
@@ -86,7 +88,8 @@ class _HomePageState extends State<HomePage> {
       if (snakePosition.last == foodLocation) {
         totalSpot.removeWhere((element) => snakePosition.contains(element));
 
-        foodLocation = totalSpot[Random().nextInt(totalSpot.length - 1)];
+        foodLocation = totalSpot[Random().nextInt(totalSpot.length -
+            1)]; //new food location is everywhere expect snackPosition
       } else {
         snakePosition.removeAt(0);
       }
